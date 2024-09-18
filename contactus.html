@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioClinPharm</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/data/images/logo.png">
+    <!--box icons-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://kit.fontawesome.com/8f8ae9d62e.js" crossorigin="anonymous"></script>
+<style>/* Layout Wrapper */
+    #contactFormWrapper {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px;
+        background: linear-gradient(135deg, #38A6A5, #2B5A57); /* Teal and Dark Green gradient */
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        max-width: 1000px;
+        margin: 0 auto;
+        animation: fadeInUp 1.5s ease-out;
+    }
+    
+    /* Contact Information */
+    .contact-info {
+        width: 40%;
+        color: #F1F1F1; /* Light gray text for contrast */
+    }
+    
+    .contact-info h3 {
+        color: #CBAACB; /* Light Purple for headers */
+        margin-bottom: 10px;
+    }
+    
+    .contact-info p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .contact-info a {
+        color: #CBAACB; /* Light Purple links */
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+        color: #EAC7C7; /* Soft Pink on hover */
+        text-decoration: underline;
+        transform: scale(1.05);
+    }
+    
+    /* Form Styles */
+    #contactForm {
+        width: 55%;
+        background-color: #38A6A5; /* Teal background */
+        padding: 30px;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    /* Form Group */
+    .form-group {
+        position: relative;
+        margin-bottom: 35px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Loader */
+    .loader {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 8px solid rgba(255, 255, 255, 0.1);
+        border-top: 8px solid #CBAACB; /* Light Purple spinner */
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    /* Input and Textarea */
+    input, textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #F1F1F1; /* Light grey background */
+        color: #333333; /* Dark Grey text */
+        transition: all 0.3s ease;
+    }
+    
+    input:hover, textarea:hover {
+        border-color: #CBAACB; /* Light Purple border on hover */
+        background-color: #EAEAEA; /* Slightly lighter background */
+    }
+    
+    input:focus, textarea:focus {
+        border-color: #CBAACB; /* Light Purple border on focus */
+        box-shadow: 0 0 10px rgba(203, 170, 203, 0.6);
+        background-color: #ffffff; /* White background */
+        transform: translateY(-3px) scale(1.02);
+    }
+    
+    /* Placeholder and Label */
+    input::placeholder, textarea::placeholder {
+        color: transparent;
+    }
+    
+    input:focus + label, 
+    textarea:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label {
+        top: -12px;
+        left: 15px;
+        font-size: 12px;
+        color: #CBAACB; /* Light Purple label */
+        background: #38A6A5; /* Teal background */
+        padding: 0 5px;
+        transition: all 0.3s ease;
+    }
+    
+    label {
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        font-size: 16px;
+        color: #aaa; /* Light gray for inactive label */
+        transition: all 0.3s ease;
+    }
+    
+    /* Button Styles */
+    button {
+        padding: 15px 20px;
+        background-color: #CBAACB; /* Light Purple button */
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #F1F1F1; /* Light gray text */
+        cursor: pointer;
+        transition: all 0.4s ease, transform 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #EAC7C7; /* Soft Pink on hover */
+        transform: scale(1.1) rotate(3deg); /* Slight rotation for effect */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    button:active {
+        transform: scale(0.95);
+        background-color: #EAC7C7; /* Soft Pink */
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    
+    /* Media Queries */
+    @media (max-width: 768px) {
+        #contactFormWrapper {
+            flex-direction: column;
+            padding: 15px;
+        }
+    
+        .contact-info, #contactForm {
+            width: 100%;
+        }
+    
+        input, textarea {
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .form-group {
+            margin-bottom: 20px;
+        }
+    
+        input, textarea {
+            font-size: 14px;
+            padding: 10px;
+        }
+    
+        button {
+            font-size: 14px;
+            padding: 12px 18px;
+        }
+    }
+    /* styles.css */
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.menu-icon {
+  display: none; /* Hide by default */
+  cursor: pointer;
+}
+
+/* Show menu icon on smaller screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide menu links by default on smaller screens */
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show menu links when 'active' class is added */
+  }
+
+  .menu-icon {
+    display: block; /* Show menu icon on smaller screens */
+  }
+}
+/* Responsive styles for mobile view */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .nav-links {
+    display: none; /* Hide nav links by default */
+    position: absolute;
+    top: 60px; /* Adjust as needed */
+    right: 0;
+    background-color: #333; /* Background color for dropdown */
+    width: 100%; /* Full width */
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show nav links when menu is active */
+  }
+
+  .nav-links li {
+    margin: 0;
+    padding: 10px;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo"><img src="/data/images/logo.png" alt="Logo"></div>
+          <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Icon -->
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section class="hero">
+        <!-- Video Background -->
+        <video autoplay muted loop id="heroVideo">
+          <source src="/data/video/intro.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        
+        <!-- Fallback Background Image -->
+        <div class="hero-image">
+          <img src="data/images/clinical reasearch.jpg" alt="">
+        </div>
+      
+        <div class="hero-content" data-aos="fade-up">
+          <h1>Welcome to <span> Bio</span>ClinPharm</h1>
+          <p>Excellence in Clinical Trials and Research</p>
+          
+        </div>
+      
+        <!-- Integrated Section -->
+        <div class="choose-section" data-aos="fade-up">
+          <div class="choose-text">
+            <h2>Bringing life-changing drugs to market</h2>
+            <ul>
+              <p>By combining world-class expertise and technical innovation, with the highest standards of regulatory and quality assurance, we stand shoulder to shoulder with our clients as a seamless and reliable extension of their team – advising, guiding and supporting them from early research and discovery through to clinical development and commercialization.</p>
+            </ul>
+        
+          </div>
+        </div>
+      </section>
+        
+    <!-- Contact Form -->
+<section id="main-section">
+    <div id="contactFormWrapper">
+        <div class="contact-info">
+            <h3>Contact</h3>
+            <p><strong>India Locations:</strong></p>
+            <p>#11, Bhannergerghatta Road, Bangalore, Karnataka, India-560076</p>
+            <p>Konark Orchid, Wagholi, Pune, India-412207</p>
+            <p><strong>Netherlands Location:</strong></p>
+            <p>Prozastraat 64, 1321HC, Almere</p>
+            <p><strong>USA Locations:</strong></p>
+            <p>Riddle Road, Cincinnati, Ohio, 45220</p>
+            <p>332 Sugartown Road, Devon, Pennsylvania, 19333</p>
+            <p><strong>Email:</strong></p>
+            <p><a href="mailto:rahul.naidu@bioclinpharm.com">rahul.naidu@bioclinpharm.com</a></p>
+            <p><a href="mailto:ganesh.kumar@bioclinpharm.com">ganesh.kumar@bioclinpharm.com</a></p>
+            <p><a href="mailto:hr@bioclinpharm.com">hr@bioclinpharm.com</a></p>
+            <p><strong>Call:</strong> <a href="tel:+919182665924">+91 9182665924</a></p>
+        </div>
+
+<!-- Contact Form -->
+<form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="dda34f32-4509-48cb-a989-f76fd25a1aec" />
+    <div class="form-group">
+        <input type="text" id="name" name="name" required>
+        <label for="name">Your Name</label>
+    </div>
+    <div class="form-group">
+        <input type="email" id="email" name="email" required>
+        <label for="email">Your Email</label>
+    </div>
+    <div class="form-group">
+        <input type="text" id="subject" name="subject" required>
+        <label for="subject">Subject</label>
+    </div>
+    <div class="form-group">
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="message">Message</label>
+    </div>
+    <div class="loader" id="loader"></div>
+    <button type="submit">Send Message</button>
+</form>
+
+    </div>
+
+
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919182665924" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+<!-- Footer -->
+<footer class="footer-container">
+    <div class="footer-section">
+        <div class="footer-column">
+            <h3>Registered Office</h3>
+            <p>Konark Orchid, Wagholi, Pune, India-412207</p>
+            <p>Phone: +91 9182665924</p>
+            <p>Email: <a href="mailto:hr@bioclinpharm.com">hr@bioclinpharm.com</a></p>
+            <p>Website: <a href="https://www.bioclinpharm.com" target="_blank">www.bioclinpharm.com</a></p>
+        </div>
+  
+        <div class="footer-column">
+            <h3>India Office</h3>
+            <p>#11, Bannerghatta Road, Bangalore, Karnataka, India-560076</p>
+            <p>Phone: +91 9182665924</p>
+            <p>Email: <a href="mailto:rahul.naidu@bioclinpharm.com">rahul.naidu@bioclinpharm.com</a></p>
+            <p>Website: <a href="https://www.bioclinpharm.com" target="_blank">www.bioclinpharm.com</a></p>
+        </div>
+  
+        <div class="footer-column">
+            <h3>USA Offices</h3>
+            <p>Riddle Road, Cincinnati, Ohio, 45220</p>
+            <p>332 Sugartown Road, Devon, Pennsylvania, 19333</p>
+            <p>Email: <a href="mailto:hr@bioclinpharm.com">hr@bioclinpharm.com</a></p>
+            <p>Website: <a href="https://www.bioclinpharm.com" target="_blank">www.bioclinpharm.com</a></p>
+        </div>
+  
+        <div class="footer-column">
+            <h3>Our Services</h3>
+            <ul>
+                <li>Clinical Research Services</li>
+                <li>Data and Analysis Services</li>
+                <li>Clinical Trial Management Services</li>
+                <li>CDISC Consulting Services</li>
+                <li>Regulatory Services</li>
+            </ul>
+        </div>
+  
+        <div class="footer-column newsletter">
+            <h3>Join Our Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+  
+    <div class="footer-bottom">
+        <p>&copy; 2024 Bioclinpharm. All rights reserved.</p>
+        <ul class="social-icons">
+            <li><a href="https://x.com/BioClinpharm" target="_blank"><i class="fab fa-x"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100087297862208" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://www.instagram.com/bioclinpharm/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://youtube.com/@bioclinpharmpvtltd4934?si=OvuZBRKUibEJrIaK" target="_blank"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://wa.me/919182665924" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+        </ul>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000,  // Animation duration
+    once: true  // Animation runs only once when element is in view
+  });
+</script>
+  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var form = this;
+        var loader = document.getElementById('loader');
+        loader.style.display = 'block'; // Show the loader
+
+        var formData = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(result => {
+            loader.style.display = 'none'; // Hide the loader
+            if (result.success) {
+                alert('Message sent successfully!');
+                form.reset(); // Reset the form
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        })
+        .catch(error => {
+            loader.style.display = 'none'; // Hide the loader
+            alert('An error occurred. Please try again.');
+        });
+    });
+    // script.js
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  navLinks.classList.toggle('active'); // Toggle 'active' class on the navigation menu
+}
+
+</script>
+  
+  
+  
+
+
+    
+</body>
+</html>

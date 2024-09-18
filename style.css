@@ -1,0 +1,1229 @@
+/* General styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F1F1F1; /* Light neutral background */
+}
+
+/* Header styling */
+header {
+  width: 100%;
+  background-color: #38A6A5; /* Primary color: Teal */
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header nav container */
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+/* Logo styling */
+.logo img {
+  max-width: 80px;
+  position: absolute;
+    top: -5px;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+
+.nav-links a {
+  color: #FFFFFF; /* White text */
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  position: relative;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for nav links */
+.nav-links a:hover {
+  color: #2B5A57; /* Dark green hover effect */
+  opacity: 1;
+}
+
+/* Underline effect on hover */
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #CBAACB; /* Light purple underline */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Hide menu links on mobile */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Responsive navigation for tablets and smaller screens */
+@media (max-width: 768px) {
+header nav {
+  align-items: normal;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+}
+
+nav {
+  flex-direction: column;
+  height: 100px;
+}
+.menu-icon {
+  display: block; /* Show hamburger icon on mobile */
+}
+
+.nav-links {
+  display: none; /* Hide nav links by default */
+  position: absolute;
+  top: 60px; /* Adjust based on header height */
+  right: 0;
+  background-color: #333; /* Background color for dropdown */
+  width: 100%; /* Full width */
+  flex-direction: column;
+  gap: 0;
+}
+
+.nav-links.active {
+  display: flex; /* Show nav links when menu is active */
+}
+
+.nav-links li {
+  margin: 0;
+  padding: 10px;
+}
+
+
+.nav-links {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  background-color: #FFFFFF; /* White background for mobile */
+  flex-direction: column;
+  width: 100%;
+  text-align: right;
+  padding: 0;
+  gap: 20px;
+  display: none; /* Hide navigation by default */
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  padding: 20px;
+  width: 100%;
+  border-bottom: 1px solid #F1F1F1; /* Light gray border */
+  font-size: 1.2rem;
+  color: #2B5A57; /* Dark green */
+}
+
+/* Show the nav links when active */
+.nav-links.active {
+  display: flex;
+}
+}
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF; /* White text for contrast */
+  overflow: hidden; /* Ensure no overflow of content */
+  padding-top: 80px; /* Adjust this value based on your navbar height */
+}
+
+#heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(60%);
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/data/images/background.jpg'); /* Fallback background image */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  display: none; /* Hide by default */
+}
+
+/* Make sure the hero content stays visible */
+.hero-content {
+  z-index: 1;
+  color: #F5F5F5; /* Light text color for better contrast */
+  animation: fadeIn 1s ease-out, slideUp 1s ease-out;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #38A6A5, #CBAACB); /* Gradient text */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text;
+  color: transparent; /* Hide default text color */
+  margin-bottom: 20px;
+  animation: bounce 2s ease-in-out;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem; /* Smaller font size for smaller screens */
+  }
+
+  .hero-content p {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+
+  .hero {
+    padding-top: 60px; /* Adjust padding based on smaller screens and navbar height */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem; /* Further reduce font size for very small screens */
+  }
+
+  .hero-content p {
+    font-size: 1rem; /* Further adjust font size */
+  }
+
+  .hero {
+    padding-top: 50px; /* Adjust padding for very small screens */
+  }
+}
+
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #2B5A57, #D1E1E4); /* Gradient text */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text;
+  color: transparent; /* Hide default text color */
+}
+
+.hero-btn {
+  padding: 15px 30px;
+  background-color: #38A6A5; /* Teal button */
+  color: #FFFFFF; /* White text */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn:hover {
+  background-color: #2B5A57; /* Dark green on hover */
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Choose Section Styling */
+.choose-section {
+  padding: 60px; /* Increase size of the section */
+  background-color: #FFFFFF; /* White background */
+  border-radius: 15px; /* Softer rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for more depth */
+  position: relative; /* To position the cards within */
+  overflow: hidden; /* Ensure no overflow of cards */
+  width: 70%; /* Slightly wider section */
+  margin: 0 auto; /* Center horizontally */
+  animation: fadeInUp 1s ease-in-out; /* Smooth fade-in animation */
+}
+
+.choose-text {
+  background: linear-gradient(90deg, #38A6A5, #CBAACB); /* Gradient text */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text;
+  color: transparent; /* Hide default text color */
+  font-size: 1.4em; /* Slightly larger font size for emphasis */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex; /* Display cards in a row */
+  justify-content: space-between;
+  gap: 25px;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Centered */
+  width: 100%;
+  opacity: 0; /* Start with hidden opacity */
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Smoother transition */
+  overflow: hidden; /* Ensure no overflow of cards */
+}
+
+.choose-section:hover .cards {
+  opacity: 1; /* Set opacity to visible */
+  transform: translate(-50%, -50%) translateY(0); /* Reset transform for smooth appearance */
+}
+
+.card {
+  background-color: #FFFFFF; /* White background for cards */
+  border-radius: 15px; /* Softer rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+  padding: 30px; /* Increase padding */
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 28%; /* Adjust card size */
+  opacity: 0; /* Start with hidden opacity */
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth animation */
+  transform: translateY(30px); /* Start with more noticeable downward shift */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.cards .card:nth-child(1) {
+  transition-delay: 0.3s;
+}
+
+.cards .card:nth-child(2) {
+  transition-delay: 0.5s;
+}
+
+.cards .card:nth-child(3) {
+  transition-delay: 0.7s;
+}
+
+.choose-section:hover .card {
+  opacity: 1; /* Show cards on hover */
+  transform: translateY(0); /* Reset transform for smooth appearance */
+}
+
+.card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  transform: translateY(-12px); /* More pronounced lift effect on hover */
+}
+
+/* Learn More Button */
+.learn-more-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #38A6A5; /* Teal for buttons */
+  color: #FFFFFF; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.learn-more-btn:hover {
+  background-color: #2B5A57; /* Dark green on hover */
+  transform: scale(1.1); /* Slightly larger on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .choose-section {
+    padding: 30px; /* Reduced padding for smaller screens */
+    width: 90%; /* Increase width for mobile */
+  }
+  
+
+  .cards {
+    position: static; /* Reset position */
+    width: 100%;
+    transform: none; /* Reset transform */
+    opacity: 1; /* Ensure cards are visible */
+    transition: opacity 0.7s ease-in-out; /* Smooth transition */
+  }
+
+  .card {
+    width: 100%; /* Full width for cards */
+    margin-bottom: 20px; /* Space between cards */
+    opacity: 1; /* Ensure cards are visible */
+    transform: translateY(0); /* Ensure cards are fully visible */
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; /* Smooth transition */
+  }
+}
+
+/* Main Section Styles */
+.details-section {
+  padding: 50px 20px;
+  width: 100%;
+  background-color: #FFFFFF; /* White background for a clean look */
+  text-align: center;
+}
+
+.details-header {
+  margin-bottom: 40px;
+}
+
+.details-header h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #38A6A5, #CBAACB); /* Gradient text */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text;
+  color: transparent; /* Hide default text color */
+  animation: fadeIn 1s ease-out;
+}
+
+.details-header p {
+  font-size: 1.3em;
+  color: #333; /* Darker text for contrast */
+}
+
+/* Details Content Styles */
+.details-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.detail-card {
+  background: #FFFFFF; /* Card background color */
+  border-radius: 15px; /* Softer corners */
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.5s, box-shadow 0.5s; /* Smooth transition */
+}
+
+.detail-card h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #38A6A5, #CBAACB); /* Gradient text */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-clip: text;
+  color: transparent; /* Hide default text color */
+}
+
+.detail-card p {
+  font-size: 1.1em;
+  color: #666; /* Adjust if needed */
+}
+
+/* Hover Animation */
+.detail-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Stronger hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.details-content {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+span {
+  color: #38A6A5; /* Teal for highlight text */
+}
+/* Classy, Modern Styling for Section */
+.section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #38A6A5 0%, #C6B7CE 100%); /* Gradient background */
+  background-size: 400% 400%;
+  animation: backgroundMove 10s ease infinite; /* Animate background gradient */
+  transition: background-color 0.3s ease;
+}
+
+/* Keyframes for animated background gradient */
+@keyframes backgroundMove {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Media Container */
+.media-container {
+  position: relative;
+  max-width: 45%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.media-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.media-container:hover {
+  transform: scale(1.05); /* Lift effect */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.media-container:hover video {
+  transform: scale(1.08); /* Zoom effect on hover */
+}
+
+/* Play Button */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: #38A6A5; /* Teal color */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.media-container:hover .play-button {
+  opacity: 1;
+}
+
+/* Content Container */
+.content-container {
+  max-width: 50%;
+  padding: 50px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* Elegant shadow */
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 1s ease;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Fade-in effect for content */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Typography */
+.content-container h2 {
+  font-size: 36px;
+  color: #38A6A5; /* Teal */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeInText 1.5s ease forwards;
+}
+
+.content-container h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #C6B7CE; /* Light purple */
+  margin-bottom: 20px;
+  position: relative;
+  text-transform: uppercase;
+  animation: fadeInText 1.5s ease forwards;
+}
+
+.content-container p, .content-container ul {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666; /* Darker text for contrast */
+  opacity: 0;
+  animation: fadeInText 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.content-container ul li {
+  margin-bottom: 12px;
+}
+
+/* Keyframes for text fade-in */
+@keyframes fadeInText {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Button Styling */
+.button {
+  padding: 12px 30px;
+  background-color: #38A6A5; /* Teal */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #C6B7CE; /* Light purple */
+  transform: scale(1.05); /* Slight lift effect on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+  .section-container {
+      flex-direction: column;
+      padding: 40px 30px;
+  }
+
+  .media-container, .content-container {
+      max-width: 100%;
+      margin-bottom: 30px;
+  }
+
+  .content-container {
+      padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container h2 {
+      font-size: 28px;
+  }
+
+  .content-container h3 {
+      font-size: 24px;
+  }
+
+  .content-container p, .content-container ul {
+      font-size: 16px;
+  }
+
+  .button {
+      font-size: 16px;
+  }
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.social-icons li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.social-icons a {
+  font-size: 2.2rem;
+  color: #3a7f86; /* Dark teal for social icons */
+  transition: transform 0.5s ease, color 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #8e58e4; /* Vibrant purple for hover effect */
+  transform: rotate(360deg);
+  filter: drop-shadow(0 0 8px rgba(142, 88, 228, 0.6)); /* Glow effect */
+}
+
+/* General Footer Styles */
+.footer-container {
+  background-color: #222b36; /* Dark gray/blue background for better contrast */
+  color: #cfd6de; /* Light gray text color */
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+/* Footer Parallax Background */
+.footer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('footer-bg.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.1;
+  transform: translateY(-20%);
+  animation: parallaxScroll 10s infinite linear;
+}
+
+@keyframes parallaxScroll {
+  from {
+      transform: translateY(-20%);
+  }
+  to {
+      transform: translateY(20%);
+  }
+}
+
+.footer-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.footer-column h3 {
+  font-size: 22px;
+  color: #8e58e4; /* Vibrant purple for headings */
+  position: relative;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  animation: slideIn 1s ease-out;
+}
+
+.footer-column p,
+.footer-column ul {
+  color: #b0bbc7; /* Lighter gray for body text */
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.footer-column ul li:before {
+  content: '•';
+  color: #3a7f86; /* Dark teal for bullet points */
+  margin-right: 10px;
+}
+
+.footer-column a {
+  color: #50bcb1; /* Lighter teal for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #8e58e4; /* Purple for hover effect */
+  filter: brightness(1.2);
+}
+
+/* Newsletter Subscription */
+.newsletter input[type="email"] {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #50bcb1; /* Lighter teal border */
+  margin-right: 10px;
+  outline: none;
+  width: 70%;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter input[type="email"]:focus {
+  border-color: #8e58e4; /* Purple border on focus */
+}
+
+.newsletter button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #3a7f86; /* Dark teal background */
+  color: #ffffff; /* White text color */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.newsletter button:hover {
+  background-color: #8e58e4; /* Purple for hover effect */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #505a65; /* Darker gray for bottom border */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .footer-column {
+      max-width: 100%;
+      text-align: center;
+  }
+
+  .newsletter input[type="email"] {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
+/* Footer Links Animation */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 5px; /* Space for underline */
+  transition: color 0.3s ease;
+  overflow: hidden; /* Ensures underline doesn't spill over */
+}
+
+.footer-column ul li::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #3a7f86; /* Dark teal underline */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  transform: scaleX(0);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform-origin: bottom right;
+}
+
+.footer-column ul li:hover::before {
+  transform: scaleX(1);
+  background-color: #8e58e4; /* Vibrant purple underline on hover */
+  right: 0;
+  transform-origin: bottom left;
+}
+
+.footer-column ul li:hover {
+  color: #8e58e4; /* Vibrant purple text color on hover */
+}
+
+
+/* Newsletter Button */
+.newsletter button {
+  padding: 12px 25px;
+  background: linear-gradient(45deg, #3a7f86, #50bcb1); /* Gradient for the button */
+  border: none;
+  color: #fff; /* White text */
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.newsletter button:hover {
+  background: linear-gradient(45deg, #50bcb1, #8e58e4); /* Gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  color: #fff;
+}
+
+/* Social Media Icons */
+.footer-social {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  color: #50bcb1; /* Light teal */
+  font-size: 26px;
+  margin-right: 20px;
+  transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  color: #fff; /* White */
+  filter: drop-shadow(0 0 6px rgba(142, 88, 228, 0.6)); /* Subtle glow effect */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #50bcb1; /* Light teal */
+}
+
+.footer-bottom p {
+  color: #8e58e4; /* Vibrant purple */
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Details Section */
+.details-section {
+  padding: 80px 60px;
+  background-color: #f0f4f8; /* Soft light gray background */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  color: #3a7f86; /* Dark teal text color */
+  transition: all 0.3s ease;
+}
+
+.details-section:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.details-header h2 {
+  font-size: 3.2rem;
+  color: #8e58e4; /* Vibrant purple */
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.details-header p {
+  font-size: 1.5rem;
+  color: #4a4a4a; /* Dark gray */
+  margin-bottom: 40px;
+  transition: color 0.3s ease;
+}
+
+.details-header:hover h2 {
+  color: #6c5b7b; /* Slightly darker purple */
+}
+
+.details-header:hover p {
+  color: #333; /* Darker gray */
+}
+
+.details-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.details-content:hover h1, h3 {
+  color: #3a7f86;
+}
+
+/* Detail Cards */
+.detail-card {
+  background-color: #fff; /* White background for cards */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+  background-color: #e4ddef; /* Soft purple on hover */
+  transform: translateY(-10px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.detail-card:hover h3 {
+  color: #3a7f86; /* Dark teal on hover */
+}
+
+.detail-card h3 {
+  font-size: 2.2rem;
+  color: #8e58e4; /* Vibrant purple */
+  margin-bottom: 20px;
+}
+
+.detail-card p {
+  font-size: 1.2rem;
+  color: #4a4a4a; /* Dark gray text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .details-section {
+      padding: 40px 20px;
+  }
+  .details-header h2 {
+      font-size: 2.6rem;
+  }
+  .details-header p {
+      font-size: 1.3rem;
+  }
+  .detail-card h3 {
+      font-size: 1.9rem;
+  }
+  .detail-card p {
+      font-size: 1rem;
+  }
+}
+
+  /* Base styles for the WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25D366; /* WhatsApp green */
+  color: #FFFFFF; /* White icon color */
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* Fade-in animation on load */
+}
+
+/* Hover effect */
+.whatsapp-btn:hover {
+  background-color: #128C7E; /* Darker green on hover */
+  transform: scale(1.1);
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Exit animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Optional: If you need to apply animations on scroll, consider using a class toggle */
+/* Base styles for the WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25D366; /* WhatsApp green */
+  color: #FFFFFF; /* White icon color */
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for depth */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* Fade-in animation on load */
+}
+
+/* Hover effect */
+.whatsapp-btn:hover {
+  background-color: #128C7E; /* Darker green on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Add a glow effect when hovered */
+.whatsapp-btn:hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: rgba(37, 211, 102, 0.3); /* WhatsApp green glow */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s infinite ease-in-out; /* Pulse effect */
+  z-index: -1; /* Make sure the glow is behind the button */
+}
+
+/* Pulse animation for hover */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Exit animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Optional: Make the button appear when user scrolls down (class toggle on scroll) */
+.whatsapp-btn.hide {
+  animation: fadeOut 0.5s forwards;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .whatsapp-btn {
+    bottom: 15px;
+    left: 15px;
+    padding: 12px;
+    font-size: 22px;
+  }
+
+  .whatsapp-btn:hover::before {
+    width: 110%;
+    height: 110%;
+  }
+}
