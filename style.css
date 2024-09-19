@@ -37,7 +37,7 @@ header nav {
 .logo img {
   max-width: 80px;
   position: absolute;
-    top: -5px;
+    top: -0.010em;
 }
 
 /* Navigation links */
