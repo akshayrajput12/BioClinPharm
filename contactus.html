@@ -224,72 +224,7 @@
             padding: 12px 18px;
         }
     }
-    /* styles.css */
-.nav-links {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-links li {
-  margin: 0 15px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-.menu-icon {
-  display: none; /* Hide by default */
-  cursor: pointer;
-}
-
-/* Show menu icon on smaller screens */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* Hide menu links by default on smaller screens */
-    flex-direction: column;
-    width: 100%;
-    background-color: #fff;
-  }
-
-  .nav-links.active {
-    display: flex; /* Show menu links when 'active' class is added */
-  }
-
-  .menu-icon {
-    display: block; /* Show menu icon on smaller screens */
-  }
-}
-/* Responsive styles for mobile view */
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block; /* Show hamburger icon on mobile */
-  }
-
-  .nav-links {
-    display: none; /* Hide nav links by default */
-    position: absolute;
-    top: 60px; /* Adjust as needed */
-    right: 0;
-    background-color: #333; /* Background color for dropdown */
-    width: 100%; /* Full width */
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .nav-links.active {
-    display: flex; /* Show nav links when menu is active */
-  }
-
-  .nav-links li {
-    margin: 0;
-    padding: 10px;
-  }
-}
+   
     </style>
 </head>
 <body>
@@ -366,6 +301,10 @@
     <div class="form-group">
         <input type="email" id="email" name="email" required>
         <label for="email">Your Email</label>
+    </div>
+    <div class="form-group">
+        <input type="number" id="number" name="number" required>
+        <label for="number">Your Phone Number</label>
     </div>
     <div class="form-group">
         <input type="text" id="subject" name="subject" required>

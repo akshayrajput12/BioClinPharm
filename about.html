@@ -13,6 +13,136 @@
     <script src="https://kit.fontawesome.com/8f8ae9d62e.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+/* Basic styling for the About section */
+#about {
+  padding: 50px 0;
+  background-color: #f9f9f9; /* Adjust based on your color theme */
+  position: relative;
+  overflow: hidden;
+}
+
+#about .container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  color: #333; /* Adjust based on your color theme */
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Expertises List */
+.expertise-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.expertise-item {
+  flex: 1;
+  min-width: calc(50% - 20px); /* Adjust based on how many items per row you want */
+  background: linear-gradient(135deg, #fff, #e3e3e3); /* Subtle gradient */
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.expertise-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.expertise-item:hover::before {
+  opacity: 1;
+}
+
+.expertise-item:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Bold color gradient on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.expertise-item h3 {
+  font-size: 1.5rem;
+  color: #333; /* Adjust based on your color theme */
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.expertise-item p {
+  color: #333; /* Adjust based on your color theme */
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.expertise-item:hover h3, .expertise-item:hover p {
+  color: #fff; /* Color change on hover */
+}
+
+.approach, .why-choose-us {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.approach h2, .why-choose-us h2 {
+  font-size: 2rem;
+  color: #333; /* Adjust based on your color theme */
+}
+
+.why-choose-us ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.why-choose-us li {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.why-choose-us li:hover {
+  background-color: #007bff; /* Hover background color */
+  color: #fff; /* Hover text color */
+  cursor: pointer;
+}
+
+.why-choose-us li:last-child {
+  border-bottom: none;
+}
+
+/* Mobile optimization: No hover effects */
+@media (max-width: 768px) {
+  .expertise-item {
+    min-width: calc(100% - 20px); /* Full width on mobile */
+  }
+
+  .expertise-item:hover {
+    transform: none;
+    background: linear-gradient(135deg, #fff, #e3e3e3); /* No color change on hover for mobile */
+    box-shadow: none;
+  }
+
+  .expertise-item:hover h3, .expertise-item:hover p {
+    color: #333; /* Keep text color same on mobile */
+  }
+}
         /* Base info-section styling */
         .info-section {
             background-color: #f9f9f9;
@@ -278,7 +408,6 @@
             <ul>
               <p>By combining world-class expertise and technical innovation, with the highest standards of regulatory and quality assurance, we stand shoulder to shoulder with our clients as a seamless and reliable extension of their team – advising, guiding and supporting them from early research and discovery through to clinical development and commercialization.</p>
             </ul>
-            <button class="learn-more-btn">Learn More</button>
           </div>
         </div>
       </section>
@@ -324,6 +453,73 @@
             <p>At Bio Clinpharm, we pride ourselves on our commitment to providing a better clinical research experience. This is grounded in a people-first approach, caring about and respecting the patients who make clinical research progress possible and enhancing their quality of life while contributing to success for our pharmaceutical, biological, and medical device clients as well as partners who support us such as research sites, advocacy groups, and vendors.</p>
         </div>
     </section>
+
+    <section id="about">
+        <div class="container">
+          <h2>Our Expertise</h2>
+          <div class="expertise-list">
+            <div class="expertise-item">
+              <h3>Pre-Clinical Studies</h3>
+              <p>We offer comprehensive support and advice for pre-clinical studies, ensuring that study objectives are clearly defined and effectively addressed. Our experts assist in designing studies that provide valuable insights and lay the groundwork for successful clinical trials.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Protocol Input</h3>
+              <p>Our services include clinical study design, sample size calculations, and expert consultancy. We work closely with clients to develop robust study protocols that enhance the reliability and validity of the research outcomes.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Randomization/Unblinding</h3>
+              <p>We manage the production of randomizations and emergency unblinding envelopes. Our systems ensure that randomization processes are conducted accurately, and unblinding procedures are handled with the utmost confidentiality.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Statistical Analysis Plan (SAP) and Output Shells</h3>
+              <p>Our Consultant Statisticians employ innovative approaches to develop detailed Statistical Analysis Plans (SAPs) and output shells. These tools are designed to optimize data analysis and improve the chances of successful trial outcomes.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Clinical Data Interchange Standards Consortium (CDISC)</h3>
+              <p>Adhering to CDISC standards, we ensure that all data used in our outputs complies with regulatory requirements. This standardization facilitates seamless data exchange and enhances the integrity of clinical research.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Output Production</h3>
+              <p>Utilizing Bioclinpharm’s standard macros within the SAS® Programming system, we achieve high efficiency in output production. Our advanced programming techniques streamline data processing and reporting.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>PK/PD Analysis</h3>
+              <p>We specialize in pharmacokinetic (PK) and pharmacodynamic (PD) analysis, modeling the relationship between drug exposure and response. Our expertise includes non-linear models and non-linear mixed-effects modeling to provide accurate insights into drug effects.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Production of Statistical Report/Clinical Study Report</h3>
+              <p>Our statistical and medical writing teams collaborate to produce comprehensive and high-quality reports. These reports are crucial for communicating study results to stakeholders and regulatory agencies.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Interim Analysis/Data Safety Monitoring Boards (DSMBs)</h3>
+              <p>We offer unblinded statistical support and advice for interim analyses and Data Safety Monitoring Boards (DSMBs). Our role is to ensure that safety and efficacy data are reviewed and interpreted effectively during the study.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>Meta Analysis</h3>
+              <p>Our expert statisticians provide guidance on potential biases and appropriate statistical methods for meta-analysis. We help clients synthesize results from multiple studies to draw more robust conclusions.</p>
+            </div>
+            <div class="expertise-item">
+              <h3>ISS/ISE</h3>
+              <p>We support the integration of safety and efficacy data for submission prior to regulatory approval. Our team ensures that Integrated Summary of Safety (ISS) and Integrated Summary of Efficacy (ISE) documents are prepared accurately and meet regulatory expectations.</p>
+            </div>
+          </div>
+      
+          <div class="approach">
+            <h2>Our Approach</h2>
+            <p>At Bioclinpharm, we take a collaborative approach to every project. Our team works closely with clients to understand their specific needs and tailor our services accordingly. We prioritize transparency, communication, and rigorous quality control to deliver results that drive success in clinical research.</p>
+          </div>
+      
+          <div class="why-choose-us">
+            <h2>Why Choose Us?</h2>
+            <ul>
+              <li><strong>Expertise:</strong> Our team consists of highly skilled statisticians and programmers with extensive experience in clinical research.</li>
+              <li><strong>Innovation:</strong> We employ cutting-edge techniques and technologies to enhance the accuracy and efficiency of our analyses.</li>
+              <li><strong>Commitment:</strong> We are dedicated to supporting our clients throughout the research process, from study design to regulatory submission.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
     
 
     <section class="section-container">
