@@ -13,7 +13,7 @@ body {
 /* Header styling */
 header {
   width: 100%;
-  background-color: #38A6A5; /* Primary color: Teal */
+  background-color: #fff; /* Primary color: Teal */
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
@@ -52,7 +52,7 @@ header nav {
 
 
 .nav-links a {
-  color: #FFFFFF; /* White text */
+  color: #222b36; /* White text */
   text-decoration: none;
   font-size: 1.2rem;
   padding: 10px 15px;
