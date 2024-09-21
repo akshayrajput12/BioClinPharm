@@ -67,6 +67,7 @@
 }
 
 .service-content p {
+    text-align: left;
     font-size: 16px;
     color: #37474F; /* Dark gray for paragraph text */
     line-height: 1.8;
@@ -75,6 +76,7 @@
 }
 
 .service-content ul {
+    text-align: left;
     list-style: disc;
     padding-left: 20px;
     animation: fadeInUp 1.5s ease;

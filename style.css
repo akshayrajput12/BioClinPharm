@@ -60,6 +60,9 @@ header nav {
   opacity: 0.8;
   transition: opacity 0.3s ease, color 0.3s ease;
 }
+p{
+  text-align: left;
+}
 
 /* Hover effect for nav links */
 .nav-links a:hover {
