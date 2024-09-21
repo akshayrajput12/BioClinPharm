@@ -65,6 +65,13 @@
     margin-bottom: 15px;
     animation: fadeInRight 1s ease;
 }
+.service-content h4 {
+    color: #009688; /* Teal for headings */
+    font-weight: 600;
+    margin-bottom: 15px;
+    animation: fadeInRight 1s ease;
+    text-align: left;
+}
 
 .service-content p {
     text-align: left;
