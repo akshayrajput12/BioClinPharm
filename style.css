@@ -13,6 +13,7 @@ body {
 /* Header styling */
 header {
   width: 100%;
+  height: 120px;
   background-color: #fff; /* Primary color: Teal */
   justify-content: space-between;
   align-items: center;
@@ -35,7 +36,7 @@ header nav {
 
 /* Logo styling */
 .logo img {
-  max-width: 80px;
+  max-width: 100px;
   position: absolute;
     top: -0.010em;
 }
@@ -103,6 +104,12 @@ header nav {
         height: 40px;
         display: flex;
         flex-direction: row;
+}
+header{
+  height: 100px;
+}
+.logo img{
+  width: 80px;
 }
 
 nav {
@@ -1235,14 +1242,17 @@ span {
 
 /* About Us Overview */
 #about-us {
-  background-color: #f9f9f9; /* Soft background color */
+  background: linear-gradient(135deg, #ffffff, #e0e0e0); /* Light gradient */
+  border-radius: 10px;
   padding: 60px 0;
   text-align: center;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2)
 }
 
 #about-us h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: #38A6A5;
   margin-bottom: 20px;
 }
 
@@ -1255,7 +1265,7 @@ span {
   font-size: 1.2rem;
   color: #666;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 #about-us .cta-button {
@@ -1263,6 +1273,7 @@ span {
   color: #fff;
   padding: 15px 30px;
   border: none;
+  margin-top: 10px;
   border-radius: 50px;
   font-size: 1rem;
   text-decoration: none;
@@ -1290,7 +1301,7 @@ span {
 
 #services-overview h2 {
   font-size: 2.5rem;
-  color: #333; /* Dark text color */
+  color: #38A6A5; /* Dark text color */
   margin-bottom: 40px;
   text-align: center;
 }
@@ -1339,13 +1350,17 @@ span {
   background: linear-gradient(135deg, #007bff, #0056b3); /* Bold color gradient on hover */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
+.service-card:hover h3{
+  color: #cfd6de;
+}
 
 .service-card h3 {
   font-size: 1.8rem;
-  color: #333; /* Dark text color for visibility */
+  color: #38A6A5; /* Dark text color for visibility */
   position: relative;
   z-index: 1;
 }
+
 
 .service-card p {
   color: #333; /* Dark text color for visibility */
@@ -1357,4 +1372,13 @@ span {
   .service-card {
     min-width: 100%; /* Full width on smaller screens */
   }
+}
+
+input::placeholder {
+  color: #888; /* Change this to your desired color */
+  opacity: 1; /* Optional: Ensures the placeholder text is fully opaque */
+}
+
+textarea::placeholder {
+  color: #888; /* Change this to your desired color */
 }
