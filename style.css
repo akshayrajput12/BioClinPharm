@@ -96,7 +96,29 @@ p{
   font-size: 2rem;
   cursor: pointer;
 }
+.logo{
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  color: #128C7E;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
+@media (max-width: 1024px){
+  .logo{
+    width: 60%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 425px){
+  .logo{
+    width: 30%;
+    justify-content: space-around;
+  }
+}
 /* Responsive navigation for tablets and smaller screens */
 @media (max-width: 768px) {
 header nav {
@@ -111,6 +133,15 @@ header{
 .logo img{
   width: 80px;
 }
+.logo{
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  font-size: 10px;
+}
+.logo p{
+  margin-top: 12px;
+}
 
 nav {
   flex-direction: column;
@@ -119,6 +150,7 @@ nav {
 .menu-icon {
   display: block; /* Show hamburger icon on mobile */
 }
+
 
 .nav-links {
   display: none; /* Hide nav links by default */
